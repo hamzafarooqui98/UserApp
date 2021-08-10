@@ -1,20 +1,20 @@
-import React from "react";
-import { Image, FlatList } from "react-native";
+import React from 'react';
+import {Image, FlatList} from 'react-native';
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 
-import cars from '../../assets/data/cars';
+import guides from '../../assets/data/guides';
 
 const HomeMap = (props) => {
-
   const getImage = (type) => {
-    if (type === 'UberX') {
-      return require('../../assets/images/top-UberX.png');
+    if (type === 'Sight') {
+      return require('../../assets/images/Sight.png');
     }
-    if (type === 'Comfort') {
-      return require('../../assets/images/top-Comfort.png');
+    if (type === 'Historical') {
+      return require('../../assets/images/Historical.png');
     }
-    return require('../../assets/images/top-UberXL.png');
+    return require('../../assets/images/Adventure.png');
   };
+  const currentLocationImage = require('../../assets/images/CurrentLocation.png');
 
   return (
     <MapView
@@ -22,26 +22,25 @@ const HomeMap = (props) => {
       provider={PROVIDER_GOOGLE}
       showsUserLocation={true}
       initialRegion={{
-        latitude: 28.450627,
-        longitude: -16.263045,
+        latitude: 24.928268358269,
+        longitude: 67.12659743723701,
         latitudeDelta: 0.0222,
         longitudeDelta: 0.0121,
       }}>
-      {cars.map((car) => (
+      {guides.map((guide) => (
         <Marker
-          key={car.id}
-          coordinate={{latitude: car.latitude, longitude: car.longitude}}
-        >
+          key={guide.id}
+          coordinate={{latitude: guide.latitude, longitude: guide.longitude}}>
           <Image
             style={{
               width: 70,
               height: 70,
               resizeMode: 'contain',
-              transform: [{
-                rotate: `${car.heading}deg`
-              }]
+              // transform: [{
+              //   rotate: `${guide.heading}deg`
+              // }]
             }}
-            source={getImage(car.type)}
+            source={getImage(guide.type)}
           />
         </Marker>
       ))}

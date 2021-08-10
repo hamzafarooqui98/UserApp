@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import {View, TextInput, SafeAreaView} from 'react-native';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { useNavigation } from '@react-navigation/native';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import {useNavigation} from '@react-navigation/native';
 
 import styles from './styles.js';
-import PlaceRow from "./PlaceRow";
+import PlaceRow from './PlaceRow';
 
 const homePlace = {
   description: 'Home',
-  geometry: { location: { lat: 48.8152937, lng: 2.4597668 } },
+  geometry: {location: {lat: 24.928249712080035, lng: 67.12659395834693}},
 };
 const workPlace = {
   description: 'Work',
-  geometry: { location: { lat: 48.8496818, lng: 2.2940881 } },
+  geometry: {location: {lat: 24.928249712080035, lng: 67.12659395834693}},
 };
 
 const DestinationSearch = (props) => {
@@ -26,9 +26,9 @@ const DestinationSearch = (props) => {
       navigation.navigate('SearchResults', {
         originPlace,
         destinationPlace,
-      })
+      });
     }
-  }
+  };
 
   useEffect(() => {
     checkNavigation();
@@ -37,7 +37,6 @@ const DestinationSearch = (props) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-
         <GooglePlacesAutocomplete
           placeholder="Where from?"
           onPress={(data, details = null) => {
@@ -46,7 +45,7 @@ const DestinationSearch = (props) => {
           enablePoweredByContainer={false}
           suppressDefaultStyles
           currentLocation={true}
-          currentLocationLabel='Current location'
+          currentLocationLabel="Current location"
           styles={{
             textInput: styles.textInput,
             container: styles.autocompleteContainer,
@@ -55,7 +54,7 @@ const DestinationSearch = (props) => {
           }}
           fetchDetails
           query={{
-            key: 'AIzaSyCO-AP06ZUlrspXl2gUoQDriaeT1JSaELs',
+            key: 'AIzaSyCNFJ91ksP57SweEz_mDgDXAewlJMlr2RI',
             language: 'en',
           }}
           renderRow={(data) => <PlaceRow data={data} />}
@@ -80,7 +79,7 @@ const DestinationSearch = (props) => {
           }}
           fetchDetails
           query={{
-            key: 'AIzaSyCO-AP06ZUlrspXl2gUoQDriaeT1JSaELs',
+            key: 'AIzaSyCNFJ91ksP57SweEz_mDgDXAewlJMlr2RI',
             language: 'en',
           }}
           renderRow={(data) => <PlaceRow data={data} />}
@@ -94,7 +93,6 @@ const DestinationSearch = (props) => {
 
         {/* Square near Destination input */}
         <View style={styles.square} />
-
       </View>
     </SafeAreaView>
   );
